@@ -59,12 +59,14 @@ public class StateManager : MonoBehaviour
                 //allow aiming via InputHandler
                 FindObjectOfType<UIManager>().SetCancellingText(" ");
                 FindObjectOfType<UIManager>().SetCanShootText(true);
+                FindObjectOfType<InputHandler>().enabled = true;
 
                 break;
             case GameStates.SHOOTING:
                 //disable line renderer
                 FindObjectOfType<InputHandler>().DisableLineRenderer();
                 FindObjectOfType<UIManager>().SetCanShootText(false);
+                FindObjectOfType<InputHandler>().enabled = false;
 
                 //balls are in scene,disallow
                 //aiming via input handler until
@@ -73,7 +75,7 @@ public class StateManager : MonoBehaviour
             case GameStates.CANCELLING:
                 FindObjectOfType<UIManager>().SetCancellingText("Cancelling!");
                 FindObjectOfType<UIManager>().SetCanShootText(false);
-
+                FindObjectOfType<InputHandler>().enabled = false;
                 break;
             case GameStates.GAMEOVER:
                 FindObjectOfType<UIManager>().SetCanShootText(false);

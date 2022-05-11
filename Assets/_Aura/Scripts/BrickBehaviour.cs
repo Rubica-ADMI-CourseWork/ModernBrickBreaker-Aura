@@ -37,8 +37,9 @@ public class BrickBehaviour : MonoBehaviour
 
     public void HandleBrickDestructionEvent()
     {
-
+        AudioManager.Instance.PlayRegularBrickExplosionFX();
         brickHolder.DecrementBrickCount(1);
+        
         Destroy(gameObject);
     }
 

@@ -34,7 +34,7 @@ public class SceneController : MonoBehaviour
     {
        
         SceneManager.LoadSceneAsync(_index);
-        StartCoroutine(WaitToReset());
+        StartCoroutine(WaitToSet());
     }
 
     public void GoToGameOverScene(int _gameOverSceneIndex)
@@ -61,7 +61,14 @@ public class SceneController : MonoBehaviour
         {
             SceneManager.LoadScene(nxtSceneIndex);
         }
-        StartCoroutine(WaitToReset());
+        StartCoroutine(WaitToSet());
+    }
+
+    private IEnumerator WaitToSet()
+    {
+        yield return new WaitForSeconds(.01f);
+        GameManager.Instance.HandleMoveToNextScene();
+        StateManager.Instance.currentState = GameStates.AIMING;
     }
     private IEnumerator WaitToReset()
     {

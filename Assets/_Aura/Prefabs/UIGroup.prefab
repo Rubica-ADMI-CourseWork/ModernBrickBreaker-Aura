@@ -1105,6 +1105,7 @@ MonoBehaviour:
   cancellingText: {fileID: 8887896228099892853}
   canShootText: {fileID: 8794265013624235591}
   gameOverPanel: {fileID: 3057120416910323622}
+  scoreKeeper: {fileID: 11400000, guid: 31e927a59d54ea542a1e13eefbb1dad9, type: 2}
 --- !u!1 &3057120416910323622
 GameObject:
   m_ObjectHideFlags: 0

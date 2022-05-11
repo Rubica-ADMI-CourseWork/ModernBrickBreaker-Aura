@@ -5,6 +5,7 @@ using System;
 
 public class BrickHolder : MonoBehaviour
 {
+    [SerializeField] ScoreDataSO scoreKeeper;
     [SerializeField] int noOfBricksInScene;
     int NoOfBricksInScene
     {
@@ -23,11 +24,13 @@ public class BrickHolder : MonoBehaviour
     private void Awake()
     {
         noOfBricksInScene = GameObject.FindGameObjectsWithTag("BrickRegular").Length;
+        
     }
 
     public void DecrementBrickCount(int _decrementAmount)
     {
         NoOfBricksInScene -= _decrementAmount;
+        scoreKeeper.SetCurrentScore(1);
     }
 
 }

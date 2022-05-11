@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70214a811d165741804bd02ffef0d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnsToPlay: 0
   noOfBallsToSpawnEachRound: 5
+  noOFTurnsToPlay: 0
+  scoreKeeper: {fileID: 11400000, guid: 31e927a59d54ea542a1e13eefbb1dad9, type: 2}

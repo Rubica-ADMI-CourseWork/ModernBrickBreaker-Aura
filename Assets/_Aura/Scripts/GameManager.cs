@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] int turnsToPlay;
     [SerializeField] int noOfBallsToSpawnEachRound;
     [SerializeField] int noOFTurnsToPlay;
+    [SerializeField] ScoreDataSO scoreKeeper;
+    UIManager uiManager;
+
+   
     public int NoOFTurnsToPlay
     {
         get => noOFTurnsToPlay;
@@ -50,12 +54,14 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(gameObject);
-       
+
+        scoreKeeper.ResetScore();
     }
     private void Start()
     {
         ResetNoOfTurns();
         FindObjectOfType<UIManager>().HandleGameStartEvent();
+        
     }
     public void ResetBallsToSpawn()
     {
@@ -68,6 +74,15 @@ public class GameManager : MonoBehaviour
     
     public void HandleRestart()
     {
+        Debug.Log("Inside Handle Restart!");
+       
+        FindObjectOfType<UIManager>().SetScoreText(0);
+        ResetBallsToSpawn();
+        ResetNoOfTurns();
+    }
+    public void HandleMoveToNextScene()
+    {
+        FindObjectOfType<UIManager>().HandleMoveToNextSceneEvent();
         ResetBallsToSpawn();
         ResetNoOfTurns();
     }
