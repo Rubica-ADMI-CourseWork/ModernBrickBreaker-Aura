@@ -6,6 +6,7 @@ public class HandleRestart : MonoBehaviour
 {
    public void HandleRestartAction()
     {
+        Debug.Log("Handling Restart!");
         SceneController.Instance.GoToSceneByIndex(0);
     }
 }

@@ -11,12 +11,19 @@ public class BallCounter : MonoBehaviour
         set
         {
             noOfBallsInScene = value;
-            if(noOfBallsInScene <= 0)
+            if (noOfBallsInScene <= 0)
             {
-                StateManager.Instance.currentState = GameStates.AIMING;
+                StartCoroutine(PauseBeforeAiming());
                 GameManager.Instance.NoOFTurnsToPlay--;
             }
         }
+    }
+
+    private IEnumerator PauseBeforeAiming()
+    {
+        yield return new WaitForSeconds(1f);
+        StateManager.Instance.currentState = GameStates.AIMING;
+
     }
 
     private void Start()
@@ -27,12 +34,15 @@ public class BallCounter : MonoBehaviour
     public void DestroyAllBallsInScene()
     {
         var ballsInScene = GameObject.FindGameObjectsWithTag("Ball");
-        foreach (var ball in ballsInScene)
+        if (ballsInScene != null)
         {
-            Destroy(ball);        
+            foreach (var ball in ballsInScene)
+            {
+                Destroy(ball);
+            }
+            NoOfBallsInScene = 0;
         }
-        NoOfBallsInScene = 0;
-        StateManager.Instance.currentState = GameStates.AIMING;
-        
+
+
     }
 }

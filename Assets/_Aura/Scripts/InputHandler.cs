@@ -55,7 +55,10 @@ public class InputHandler : MonoBehaviour
     }
     private void Update()
     {
-        if (StateManager.Instance.currentState != GameStates.AIMING || EventSystem.current.IsPointerOverGameObject()) return;
+
+        if (StateManager.Instance.currentState == GameStates.SHOOTING || 
+            StateManager.Instance.currentState == GameStates.CANCELLING||
+            StateManager.Instance.currentState ==GameStates.GAMEOVER||EventSystem.current.IsPointerOverGameObject()) return;
 
         if (Input.GetMouseButtonDown(0) )
         {

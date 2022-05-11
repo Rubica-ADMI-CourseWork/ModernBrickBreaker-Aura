@@ -28,7 +28,9 @@ public class GameManager : MonoBehaviour
             if(noOFTurnsToPlay <= 0)
             {
                 StateManager.Instance.currentState = GameStates.GAMEOVER;
+                SceneController.Instance.GoToGameOverScene(2);
             }
+            FindObjectOfType<UIManager>().SetTurnsLeft(noOFTurnsToPlay);
         }
     }
     public int NoOfBallsToSpawnEachRound
@@ -48,10 +50,12 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(gameObject);
+       
     }
     private void Start()
     {
         ResetNoOfTurns();
+        FindObjectOfType<UIManager>().HandleGameStartEvent();
     }
     public void ResetBallsToSpawn()
     {
@@ -66,6 +70,5 @@ public class GameManager : MonoBehaviour
     {
         ResetBallsToSpawn();
         ResetNoOfTurns();
-
     }
 }
