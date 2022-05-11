@@ -103,12 +103,10 @@ public class InputHandler : MonoBehaviour
         ReAlignLineRenderer(ballSpawnPosition);
         StartCoroutine(ShootBall(shootDirection));
     }
-
     private void ReAlignLineRenderer(Transform ballSpawnPosition)
     {
         lineRenderer.SetPosition(0, ballSpawnPosition.position);
     }
-
     private IEnumerator ShootBall(Vector3 shootDirection)
     {
         GameObject spawnedBall;

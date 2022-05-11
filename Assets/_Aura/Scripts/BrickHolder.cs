@@ -15,7 +15,7 @@ public class BrickHolder : MonoBehaviour
             if(noOfBricksInScene <= 0)
             {
                 //go to next scene
-                SceneController.Instance.GoToSceneByIndex(1);
+                SceneController.Instance.GoToNextScene();
             }
         }
     }
